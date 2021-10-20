@@ -1,15 +1,15 @@
 ## usersテーブル
 
-|Column           |Type    |Options                         |
-|-----------------|--------|--------------------------------|
-| nickname        | string | null: false                    |
-| email           | string | null: false, foreign_key: true |
-| password        | string | null: false                    |
-| last-name       | string | null: false                    |
-| first-name      | string | null: false                    |
-| last-name-kana  | string | null: false                    |
-| first-name-kana | string | null: false                    |
-| birth-date      | string | null: false                    |
+|Column              |Type    |Options                         |
+|--------------------|--------|--------------------------------|
+| nickname           | string | null: false                    |
+| email              | string | null: false, foreign_key: true |
+| encrypted_password | string | null: false                    |
+| last-name          | string | null: false                    |
+| first-name         | string | null: false                    |
+| last-name-kana     | string | null: false                    |
+| first-name-kana    | string | null: false                    |
+| birth-date         | string | null: false                    |
 
 ### Association
 - has_many :items
