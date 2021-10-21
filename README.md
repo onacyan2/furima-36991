@@ -3,7 +3,7 @@
 |Column              |Type    |Options                         |
 |--------------------|--------|--------------------------------|
 | nickname           | string | null: false                    |
-| email              | string | null: false, foreign_key: true |
+| email              | string | null: false, unique: true      |
 | encrypted_password | string | null: false                    |
 | last_name          | string | null: false                    |
 | first_name         | string | null: false                    |
@@ -45,7 +45,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :addresses
+- has_one :address
 
 
 ## addressesテーブル
