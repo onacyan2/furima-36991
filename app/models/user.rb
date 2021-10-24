@@ -14,8 +14,8 @@ class User < ApplicationRecord
   validates :first_name_kana,       presence: true
   validates :first_name_kana,       format: { with: /\A[ァ-ヶー－]+\z/ }, allow_blank: true
   validates :birth_date,            presence: true
-  validates :password,              format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
-  validates :password_confirmation, format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
+  validates :password,              format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
+  validates :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
 
   has_many :items
   has_many :orders
