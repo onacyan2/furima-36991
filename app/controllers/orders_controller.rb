@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def index
     @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
@@ -26,11 +27,11 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
-    binding.pry
     Payjp::Charge.create(
       amount: @item[:price],
       card: order_params[:token],
       currency: 'jpy'
     )
   end
+
 end
