@@ -56,7 +56,6 @@ RSpec.describe OrderAddress, type: :model do
       end
       it 'phone_numberが10桁未満の場合だと保存できない' do
         @order_address.phone_number = '0901234567'
-        binding.pry
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Phone number is invalid')
       end
