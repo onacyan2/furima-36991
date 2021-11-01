@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_order_address, only: [:index, :create]
   before_action :purchased_confirmation, only: [:index]
 
   def index
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_params)
     if @order_address.valid?
       pay_item
@@ -36,12 +35,12 @@ class OrdersController < ApplicationController
     )
   end
 
+  def set_order_address
+    @item = Item.find(params[:item_id])
+  end
+
   def purchased_confirmation
     @item = Item.find(params[:item_id])
-    if current_user == @item.user
-      redirect_to root_path
-    elsif current_user != @item.user && @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if (current_user == @item.user) || (current_user != @item.user && @item.order.present?)
   end
 end
