@@ -40,9 +40,6 @@ class OrdersController < ApplicationController
   end
 
   def purchased_confirmation
-    @item = Item.find(params[:item_id])
-    # redirect_to root_path if current_user == @item.user || current_user != @item.u && @item.order.present?
     redirect_to root_path if current_user == @item.user || @item.order.present?
- 
   end
 end
